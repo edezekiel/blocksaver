@@ -17,26 +17,24 @@ class Profile extends Component {
     this.loadBlockchainData();
   }
 
-  async loadBlockchainData() {
-    const web3 = new Web3(Web3.givenProvider || "http://localhost:8545");
-    const accounts = await web3.eth.getAccounts();
-    this.setState({ account: accounts[0] });
-    const crowdsaleContract = new web3.eth.Contract(ABI, tokenAddress);
-    this.setState({ crowdsaleContract });
-    let checkins = await crowdsaleContract.methods
-      .balanceOf(this.state.account)
-      .call();
-    this.setState({ checkins });
-  }
+  // async loadBlockchainData() {
+  //   const web3 = new Web3(Web3.givenProvider || "http://localhost:8545");
+  //   const accounts = await web3.eth.getAccounts();
+  //   this.setState({ account: accounts[0] });
+  //   const crowdsaleContract = new web3.eth.Contract(ABI, tokenAddress);
+  //   this.setState({ crowdsaleContract });
+  //   let checkins = await crowdsaleContract.methods
+  //     .balanceOf(this.state.account)
+  //     .call();
+  //   this.setState({ checkins });
+  // }
 
-  constructor(props) {
-    super(props);
-    this.state = {
+  state = {
       account: "",
       checkins: 0,
       lastCheckin: ""
-    };
-  }
+  };
+
   render() {
     return (
       <div className="Profile">
