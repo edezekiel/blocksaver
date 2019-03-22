@@ -11,32 +11,25 @@ import ABI from "../ABI/tokenAbi";
 
 let tokenAddress = "0x9aA9D3FefFE93D4a9e51b567B9ed5412dE75a59D";
 
-// let value = Web3.eth.toBigNumber(4042625);
-// let blockNumber = window.web3.getBlockNumber();
+let contract = window.web3.eth.contract(ABI).at(tokenAddress);
 
 class NavBar extends Component {
-  componentWillMount() {
-    this.loadBlockchainData();
+
+  state = {
+    tokens: null
   }
 
-  async loadBlockchainData() {
-    const web3 = new Web3(Web3.givenProvider || "http://localhost:8545");
-    const accounts = await web3.eth.getAccounts();
-    this.setState({ account: accounts[0] });
-    const tokenContract = new web3.eth.Contract(ABI, tokenAddress);
-    this.setState({ tokenContract });
-    let balance = await tokenContract.methods
-      .balanceOf(this.state.account)
-      .call();
-    this.setState({ balance });
+  componentDidMount(){
+    this.setTokens()
   }
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      account: "",
-      balance: 0
-    };
+  setTokens = () => {
+    if (window.sessionStorage.tokens) {
+      this.setState({tokens: window.sessionStorage.tokens})
+    } else {
+      this.setState({tokens: 0})
+      window.sessionStorage.setItem("tokens", 0)
+    }
   }
 
   render() {
@@ -52,7 +45,9 @@ class NavBar extends Component {
           </Link>
         )}
         <h2>BlockSaver</h2>
-        <h2>${this.state.balance / 1000000000000000000}</h2>
+        <h2>{window.sessionStorage.tokens ?
+        window.sessionStorage.tokens
+        : "Loading..."} Tokens</h2>
       </div>
     );
   }

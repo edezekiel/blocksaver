@@ -23,22 +23,24 @@ class AccountDisplay extends Component {
     return (
       <div className="Display">
         <div><h3>{title}</h3></div>
-        <input
-          id="address"
-          value={this.state.address}
-          onChange={this.state.edit === true ? e => this.onChange(e) : null}
-        />
-        <button
-          onClick={() => {
-            if (this.state.edit === true) {
-              localStorage("address", this.state.address);
-              this.setState({ address: localStorage("address") });
-            }
-            this.setState({ edit: !this.state.edit });
-          }}
-        >
-          {!this.state.edit ? "edit" : "save"}
-        </button>
+        <div className="AccountContainer">
+          <input
+            id="address"
+            value={this.state.address}
+            onChange={this.state.edit === true ? e => this.onChange(e) : null}
+          />
+          <button
+            onClick={() => {
+              if (this.state.edit === true) {
+                localStorage("address", this.state.address);
+                this.setState({ address: localStorage("address") });
+              }
+              this.setState({ edit: !this.state.edit });
+            }}
+          >
+            {!this.state.edit ? "edit" : "save"}
+          </button>
+        </div>
       </div>
     );
   }

@@ -149,7 +149,7 @@ body {
   padding: 10px;
   border-radius: 10px;
   background-color: rgba(110, 198, 152);
-  color: black;
+  color: white;
   border-width: 2px;
   border-color: black;
   font-size: 22px;
@@ -165,7 +165,7 @@ body {
   padding: 5px;
 }
 
-.Display h3 {
+.Display h3, .AccountContainer, .Badges {
   margin: 5px;
   text-align: center;
   color: white;

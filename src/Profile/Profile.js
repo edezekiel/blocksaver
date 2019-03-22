@@ -41,10 +41,10 @@ class Profile extends Component {
     return (
       <div className="Profile">
         <div className="Displays">
-          {this.renderLifetimeCheckins()}
-          {this.renderLastCheckin()}
-          {this.renderBadges()}
           {this.renderAccount()}
+          {this.renderBadges()}
+          {this.renderLastCheckin()}
+          {this.renderLifetimeCheckins()}
         </div>
       </div>
     );
@@ -53,7 +53,7 @@ class Profile extends Component {
   renderLifetimeCheckins = () => {
     return (
       <div>
-        <CheckinDisplay title="Lifetime Checkins" data={"# of checkins"} />
+        <CheckinDisplay title="Lifetime Checkins" data={window.sessionStorage.tokens} />
       </div>
     );
   };
@@ -61,7 +61,7 @@ class Profile extends Component {
   renderLastCheckin = () => {
     return (
       <div>
-        <CheckinDisplay title="Last Checkin" data={"Issue @ GPS loc"} />
+        <CheckinDisplay title="Last Checkin" data={window.sessionStorage.time ? window.sessionStorage.time : null} />
       </div>
     );
   };
