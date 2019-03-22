@@ -7,12 +7,6 @@ import "../App.css";
 import back from "./left-arrow.png";
 import profile from "./user.png";
 
-import ABI from "../ABI/tokenAbi";
-
-let tokenAddress = "0x9aA9D3FefFE93D4a9e51b567B9ed5412dE75a59D";
-
-// let contract = window.web3.eth.contract(ABI).at(tokenAddress);
-
 class NavBar extends Component {
 
   state = {
