@@ -9,9 +9,9 @@ class AccountDisplay extends Component {
   };
 
   componentDidMount() {
-    window.web3
-      ? this.setState({ address: window.web3.eth.defaultAccount })
-      : this.setState({ address: "0xohhh" });
+    // window.web3
+    //   ? this.setState({ address: window.web3.eth.defaultAccount })
+    //   : this.setState({ address: "0xohhh" });
   }
 
   onChange = e => {
