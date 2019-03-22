@@ -9,9 +9,9 @@ import Report from "./Report/Report";
 
 class App extends Component {
   render() {
-    if (window.web3) {
-      window.ethereum.enable();
-    }
+    // if (window.web3) {
+    //   window.ethereum.enable();
+    // }
     return (
       <div className="App">
         <BrowserRouter>
